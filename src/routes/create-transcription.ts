@@ -1,6 +1,9 @@
-import { FastifyInstance } from "fastify";
 import { createReadStream } from "node:fs";
+
+import { FastifyInstance } from "fastify";
+
 import { z } from "zod";
+
 import { prisma } from "../lib/prisma";
 import { openai } from "../lib/openai";
 
@@ -9,7 +12,6 @@ export async function createTranscriptionRoute(app: FastifyInstance) {
     const paramsSchema = z.object({
       videoId: z.string().uuid(),
     })
- 
 
     const { videoId } = paramsSchema.parse(req.params)
 
